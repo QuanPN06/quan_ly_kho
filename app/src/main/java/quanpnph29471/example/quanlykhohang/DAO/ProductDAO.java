@@ -34,7 +34,7 @@ public class ProductDAO {
         while (cursor.moveToNext()){
             Product obj = new Product();
             obj.setId_product(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id_product"))));
-            obj.setId_productType(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id_productType"))));
+            obj.setId_category(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id_category"))));
             obj.setName_product(cursor.getString(cursor.getColumnIndex("name_product")));
             obj.setQuantity(cursor.getInt(cursor.getColumnIndex("quantity")));
             obj.setPrice(cursor.getInt(cursor.getColumnIndex("price")));
@@ -46,7 +46,7 @@ public class ProductDAO {
 
     public long insert(Product obj){
         ContentValues values = new ContentValues();
-        values.put("id_productType",obj.getId_productType());
+        values.put("id_category",obj.getId_category());
         values.put("name_product",obj.getName_product());
         values.put("quantity",obj.getQuantity());
         values.put("price",obj.getPrice());
@@ -55,24 +55,32 @@ public class ProductDAO {
         return sqLiteDatabase.insert("tbl_product", null, values);
     }
 
-    public int update(Category obj){
+    public int update(Product obj){
         ContentValues values = new ContentValues();
 
-        values.put("typeName", obj.getName());
-        return sqLiteDatabase.update("tbl_product_type", values,"id_productType = ?", new String[]{String.valueOf(obj.getId())});
+        values.put("id_category",obj.getId_category());
+        values.put("name_product",obj.getName_product());
+        values.put("quantity",obj.getQuantity());
+        values.put("price",obj.getPrice());
+        values.put("describe",obj.getDescribe());
+        return sqLiteDatabase.update("tbl_product", values,"id_product = ?", new String[]{String.valueOf(obj.getId_product())});
     }
 
     public int delete(int ID) {
-        return sqLiteDatabase.delete("tbl_product_type", "id_productType = ?", new String[]{String.valueOf(ID)});
+        return sqLiteDatabase.delete("tbl_product", "id_product = ?", new String[]{String.valueOf(ID)});
     }
 
-    public Category getById(int id) {
-        Cursor cursor = sqLiteDatabase.query("tbl_product_type", null,"id_productType = ?",
+    public Product getById(int id) {
+        Cursor cursor = sqLiteDatabase.query("tbl_product", null,"id_product = ?",
                 new String[]{String.valueOf(id)}, null, null, null);
         if (cursor.moveToNext()){
-            return new Category(
+            return new Product(
                     cursor.getInt(0),
-                    cursor.getString(1))
+                    cursor.getInt(1),
+                    cursor.getString(2),
+                    cursor.getInt(3),
+                    cursor.getInt(4),
+                    cursor.getString(5))
                     ;
         }else {
             return null;

@@ -1,7 +1,7 @@
 package quanpnph29471.example.quanlykhohang.Model;
 
 public class Product {
-    private int id_product,id_productType,price,quantity;
+    private int id_product,id_category,price,quantity;
     private String name_product,describe;
 
     public int getId_product() {
@@ -12,12 +12,12 @@ public class Product {
         this.id_product = id_product;
     }
 
-    public int getId_productType() {
-        return id_productType;
+    public int getId_category() {
+        return id_category;
     }
 
-    public void setId_productType(int id_productType) {
-        this.id_productType = id_productType;
+    public void setId_category(int id_category) {
+        this.id_category = id_category;
     }
 
     public int getPrice() {
@@ -52,15 +52,15 @@ public class Product {
         this.describe = describe;
     }
 
-    public Product() {
-    }
-
-    public Product(int id_product, int id_productType, int price, int quantity, String name_product, String describe) {
+    public Product(int id_product, int id_category, String name_product, int price, int quantity, String describe) {
         this.id_product = id_product;
-        this.id_productType = id_productType;
+        this.id_category = id_category;
         this.price = price;
         this.quantity = quantity;
         this.name_product = name_product;
         this.describe = describe;
+    }
+
+    public Product() {
     }
 }

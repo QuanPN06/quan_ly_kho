@@ -27,7 +27,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String TABLE_PRODUCTTYPE_CREATE ="CREATE TABLE IF NOT EXISTS " +
             "tbl_category (" +
             "    id_category INTEGER PRIMARY KEY AUTOINCREMENT," +
-            "    category_name       TEXT    NOT NULL" +
+            "    name       TEXT    NOT NULL" +
             ") ";
 
     public static final String TABLE_PRODUCT_CREATE = "CREATE TABLE IF NOT EXISTS " +

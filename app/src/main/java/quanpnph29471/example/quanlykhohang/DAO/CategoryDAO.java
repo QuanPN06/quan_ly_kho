@@ -32,7 +32,7 @@ public class CategoryDAO {
         while (cursor.moveToNext()){
             Category obj = new Category();
             obj.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id_category"))));
-            obj.setName(cursor.getString(cursor.getColumnIndex("category_name")));
+            obj.setName(cursor.getString(cursor.getColumnIndex("name")));
 
             list.add(obj);
         }
@@ -41,14 +41,14 @@ public class CategoryDAO {
 
     public long insert(Category obj){
         ContentValues values = new ContentValues();
-        values.put("category_name", obj.getName());
+        values.put("name", obj.getName());
         return sqLiteDatabase.insert("tbl_category", null, values);
     }
 
     public int update(Category obj){
         ContentValues values = new ContentValues();
 
-        values.put("category_name", obj.getName());
+        values.put("name", obj.getName());
         return sqLiteDatabase.update("tbl_category", values,"id_category = ?", new String[]{String.valueOf(obj.getId())});
     }
 
