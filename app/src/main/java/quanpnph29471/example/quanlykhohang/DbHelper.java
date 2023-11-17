@@ -53,7 +53,6 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_DETAIL_CREATE = "CREATE TABLE IF NOT EXISTS " +
             " tbl_detail (" +
-            "    id_detail  INTEGER PRIMARY KEY AUTOINCREMENT," +
             "    id_invoice INTEGER REFERENCES tbl_invoice (id_invoice) " +
             "                       NOT NULL," +
             "    id_product INTEGER REFERENCES tbl_product (id_product) " +
